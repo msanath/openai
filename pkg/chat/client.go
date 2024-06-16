@@ -9,13 +9,13 @@ type Client struct {
 	client client.Client
 }
 
-func NewClient(url, apiKey string) *Client {
-	return &Client{
+func NewClient(url, apiKey string) Client {
+	return Client{
 		client: client.NewClient(url, apiKey),
 	}
 }
 
-func (c *Client) Send(request ChatRequest) (*ChatResponse, error) {
+func (c Client) Send(request ChatRequest) (*ChatResponse, error) {
 	var response ChatResponse
 	resp, err := c.client.Send(request)
 	if err != nil {

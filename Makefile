@@ -8,7 +8,7 @@ clean-build: clean build
 build: gomodtidy
 	mkdir -p $(BIN_DIR)
 	@echo "Building the project..."
-	@go build -o $(BIN_DIR)/openai cmd/main.go
+	@go build -o $(BIN_DIR)/chatbot cmd/chatbot/main.go
 
 .PHONY: gomodtidy
 gomodtidy:
