@@ -13,7 +13,7 @@ build: gomodtidy
 .PHONY: gomodtidy
 gomodtidy:
 	@echo "Tidying go modules..."
-	@go mod tidy
+	go mod tidy
 
 .PHONY: test
 test:
