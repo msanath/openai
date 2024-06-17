@@ -4,8 +4,9 @@ package chat
 
 import (
 	"encoding/json"
-	"msanath/openai/pkg/models"
-	"msanath/openai/pkg/roles"
+
+	"github.com/msanath/openai/pkg/models"
+	"github.com/msanath/openai/pkg/roles"
 )
 
 // ChatRequest is the request schema for the chat service.

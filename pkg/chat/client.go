@@ -2,7 +2,7 @@ package chat
 
 import (
 	"encoding/json"
-	"msanath/openai/internal/client"
+	"github.com/msanath/openai/internal/client"
 )
 
 const (

@@ -5,9 +5,9 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"msanath/openai/pkg/chat"
-	"msanath/openai/pkg/models"
-	"msanath/openai/pkg/roles"
+	"github.com/msanath/openai/pkg/chat"
+	"github.com/msanath/openai/pkg/models"
+	"github.com/msanath/openai/pkg/roles"
 	"os"
 
 	"github.com/joho/godotenv"

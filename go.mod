@@ -1,4 +1,4 @@
-module msanath/openai
+module github.com/msanath/openai
 
 go 1.22.4
 
