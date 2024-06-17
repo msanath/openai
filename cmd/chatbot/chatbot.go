@@ -4,12 +4,13 @@ import (
 	"bufio"
 	"context"
 	"fmt"
-	"github.com/msanath/openai/extensions/chatbot"
-	"github.com/msanath/openai/pkg/chat"
-	"github.com/msanath/openai/pkg/models"
 	"os"
 	"strings"
 	"time"
+
+	"github.com/msanath/openai/extension/chatbot"
+	"github.com/msanath/openai/pkg/chat"
+	"github.com/msanath/openai/pkg/models"
 
 	"github.com/joho/godotenv"
 	"github.com/spf13/cobra"
