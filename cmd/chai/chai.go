@@ -39,6 +39,11 @@ func newRootCmd() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "chai",
 		Short: "chai is a chatbot that provides a chatbot experience using OpenAI's models.",
+		Long: `
+	"chai" is a chatbot that provides a chatbot experience using OpenAI's models.
+
+	This CLI requires an API key from OpenAI. You can get one by requesting one at https://platform.openai.com/api-keys.
+	Once you have the API key, you need to set it in the OPENAI_API_KEY environment variable.`,
 		RunE: func(cmd *cobra.Command, args []string) error {
 			for _, allowedModel := range allowedModels {
 				if model == allowedModel {
@@ -53,7 +58,9 @@ func newRootCmd() *cobra.Command {
 		},
 	}
 
-	cmd.Flags().StringVarP(&model, "model", "m", string(models.GPT_3_5_Turbo), "The openai model to use. Allowed values are "+strings.Join(allowedModels, ", "))
+	cmd.Flags().StringVarP(&model, "model", "m",
+		string(models.GPT_3_5_Turbo), "The openai model to use. Allowed values are "+strings.Join(allowedModels, ", "))
+
 	return cmd
 }
 
@@ -138,7 +145,7 @@ func getAPIKey() (string, error) {
 
 	apiKey := os.Getenv("OPENAI_API_KEY")
 	if apiKey == "" {
-		return "", fmt.Errorf("OPENAI_API_KEY is not set")
+		return "", fmt.Errorf("OPENAI_API_KEY env variable is not set")
 	}
 	return apiKey, nil
 }
