@@ -9,6 +9,7 @@ import (
 
 type options struct {
 	model   models.Model
+	tools   []chat.Tool
 	persona string
 }
 
@@ -26,6 +27,12 @@ func WithPersona(persona string) Option {
 	}
 }
 
+func WithTools(tools []chat.Tool) Option {
+	return func(o *options) {
+		o.tools = tools
+	}
+}
+
 type Client struct {
 	client  chat.Client
 	request chat.ChatRequest
@@ -36,6 +43,7 @@ func NewClient(c chat.Client, opts ...Option) Client {
 	o := options{
 		model:   models.GPT_3_5_Turbo,
 		persona: "You are a helpful assistant.",
+		tools:   nil,
 	}
 	for _, opt := range opts {
 		opt(&o)
@@ -50,6 +58,7 @@ func NewClient(c chat.Client, opts ...Option) Client {
 				Role:    roles.System,
 			},
 		},
+		Tools: o.tools,
 	}
 
 	return Client{

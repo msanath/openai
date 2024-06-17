@@ -5,17 +5,21 @@ import (
 	"msanath/openai/internal/client"
 )
 
+const (
+	openAIChatCompletionURL = "https://api.openai.com/v1/chat/completions"
+)
+
 type Client struct {
 	client client.Client
 }
 
-func NewClient(url, apiKey string) Client {
+func NewClient(apiKey string) Client {
 	return Client{
-		client: client.NewClient(url, apiKey),
+		client: client.NewClient(openAIChatCompletionURL, apiKey),
 	}
 }
 
-func (c Client) Send(request ChatRequest) (*ChatResponse, error) {
+func (c *Client) Send(request ChatRequest) (*ChatResponse, error) {
 	var response ChatResponse
 	resp, err := c.client.Send(request)
 	if err != nil {

@@ -13,7 +13,6 @@ import (
 )
 
 const (
-	openAIURL   = "https://api.openai.com/v1/chat/completions"
 	columnLimit = 150
 )
 
@@ -24,7 +23,7 @@ func main() {
 		return
 	}
 
-	cb := chatbot.NewClient(chat.NewClient(openAIURL, apiKey), chatbot.WithModel(models.GPT_4))
+	cb := chatbot.NewClient(chat.NewClient(apiKey), chatbot.WithModel(models.GPT_4))
 	chatLoop(cb)
 }
 
@@ -42,7 +41,7 @@ func chatLoop(cb chatbot.Client) {
 		if text == "goodbye" || text == "exit" {
 			shouldExit = true
 		}
-		
+
 		// Call the chat function to get the response
 		response, err := cb.Send(text)
 		if err != nil {
@@ -50,8 +49,9 @@ func chatLoop(cb chatbot.Client) {
 			continue
 		}
 		response = formatText(response)
-		fmt.Println("Bot: ", response)
+		fmt.Println("Bot:", response)
 		fmt.Println()
+
 		if shouldExit {
 			break
 		}
